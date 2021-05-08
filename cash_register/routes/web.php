@@ -16,3 +16,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/denomination', 'DenominationController@index');
+$router->get('/denomination/{id}', 'DenominationController@show');
+$router->post('/denomination', 'DenominationController@create');
+$router->post('/denominations', 'DenominationController@createMany');
+$router->put('/denomination/{id}', 'DenominationController@update');
+$router->delete('/denomination/{id}', 'DenominationController@delete');
+$router->put('/disabled/{id}', 'DenominationController@disabled');
