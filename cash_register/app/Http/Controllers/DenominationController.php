@@ -62,8 +62,11 @@ class DenominationController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $Denomination = Denomination::find($id);
+
+        if ($Denomination == null) {
+            return response()->json(["Message" => "Denomination not found!", "status" => 200]);
+        }
 
         if ($Denomination->validateIfAlreadyExist($request->name, $request->type)) {
             return response()->json(["Message" => "Denomination could not be created, already exist!", "status" => 200]);
@@ -78,6 +81,11 @@ class DenominationController extends Controller
     public function delete($id)
     {
         $Denomination = Denomination::find($id);
+
+        if ($Denomination == null) {
+            return response()->json(["Message" => "Denomination not found!", "status" => 200]);
+        }
+
         $Denomination->delete();
 
         return response()->json(["Message" => "Denomination sucessfully deleted!", "status" => 200]);
@@ -86,6 +94,11 @@ class DenominationController extends Controller
     public function disabled($id)
     {
         $Denomination = Denomination::find($id);
+
+        if ($Denomination == null) {
+            return response()->json(["Message" => "Denomination not found!", "status" => 200]);
+        }
+
         $Denomination->is_active  = 0;
         $Denomination->save();
         return response()->json(["Message" => "Denomination Successfully Disabled!", "status" => 200]);
