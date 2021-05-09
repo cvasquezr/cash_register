@@ -28,4 +28,11 @@ class CashRegister extends Model
     {
         return $this->where('name', $name)->get()->isEmpty() ? 0 : 1;
     }
+
+    public function getCash($name)
+    {
+        $cashRegister = $this->where('name', $name)->first();
+        if ($cashRegister == null) return 0;
+        return $cashRegister['id'];
+    }
 }

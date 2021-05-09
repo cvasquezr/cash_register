@@ -29,4 +29,11 @@ class Denomination extends Model
     {
         return $this->where('name', $name)->where('type', $type)->get()->isEmpty() ? 0 : 1;
     }
+
+    public function getDenomination($name, $type)
+    {
+        $denomination = $this->where('name', $name)->where('type', $type)->where('is_active', 1)->first();
+        if ($denomination == null) return 0;
+        return $denomination['id'];
+    }
 }

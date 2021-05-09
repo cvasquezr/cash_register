@@ -33,3 +33,11 @@ $router->get('/cashRegister/{id}', 'CashRegisterController@show');
 $router->post('/cashRegister', 'CashRegisterController@create');
 $router->put('/cashRegister/{id}', 'CashRegisterController@update');
 $router->delete('/cashRegister/{id}', 'CashRegisterController@delete');
+
+// Base monetaria de la caja
+$router->get('/base', 'MonetaryBaseController@index');
+$router->post('/base', 'MonetaryBaseController@create');
+$router->delete('/base', 'MonetaryBaseController@delete');
+
+// Pagos
+$router->post('/pay', 'PayController@create');
